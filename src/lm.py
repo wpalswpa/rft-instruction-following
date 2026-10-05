@@ -3,15 +3,16 @@ import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
 MODEL_ID = "Qwen/Qwen2.5-0.5B-Instruct"
+REVISION = "7ae557604adf67be50417f59c2c2f167def9a775"  # 2026-10-05 기준 허브 최신 커밋에 고정
 # Qwen2.5 채팅 템플릿의 기본 시스템 문구. 모든 조건이 같은 문구로 시작하고, B1만 뒤에 한 문장을 덧붙인다.
 DEFAULT_SYSTEM = "You are Qwen, created by Alibaba Cloud. You are a helpful assistant."
 STRICT_SUFFIX = " Follow every formatting instruction in the user's message exactly."
 
 
 def load(adapter_dir=None):
-    tok = AutoTokenizer.from_pretrained(MODEL_ID)
+    tok = AutoTokenizer.from_pretrained(MODEL_ID, revision=REVISION)
     tok.padding_side = "left"
-    model = AutoModelForCausalLM.from_pretrained(MODEL_ID, torch_dtype=torch.float32)
+    model = AutoModelForCausalLM.from_pretrained(MODEL_ID, revision=REVISION, torch_dtype=torch.float32)
     if adapter_dir:
         from peft import PeftModel
         model = PeftModel.from_pretrained(model, adapter_dir)

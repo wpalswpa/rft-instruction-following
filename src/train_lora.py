@@ -12,7 +12,7 @@ import torch
 from peft import LoraConfig, get_peft_model
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
-from lm import MODEL_ID, messages
+from lm import MODEL_ID, REVISION, messages
 
 ROOT = Path(__file__).resolve().parents[1]
 CFG = dict(r=16, alpha=32, dropout=0.05, targets=["q_proj", "k_proj", "v_proj", "o_proj"], lr=2e-4, epochs=2,
@@ -33,8 +33,8 @@ def main():
     random.seed(CFG["seed"])
     torch.manual_seed(CFG["seed"])
     rows = [json.loads(l) for l in (ROOT / "data/rft_train.jsonl").read_text("utf-8").splitlines()]
-    tok = AutoTokenizer.from_pretrained(MODEL_ID)
-    model = AutoModelForCausalLM.from_pretrained(MODEL_ID, torch_dtype=torch.float32)
+    tok = AutoTokenizer.from_pretrained(MODEL_ID, revision=REVISION)
+    model = AutoModelForCausalLM.from_pretrained(MODEL_ID, revision=REVISION, torch_dtype=torch.float32)
     model = get_peft_model(model, LoraConfig(r=CFG["r"], lora_alpha=CFG["alpha"], lora_dropout=CFG["dropout"],
                                              target_modules=CFG["targets"], task_type="CAUSAL_LM"))
     trainable = sum(p.numel() for p in model.parameters() if p.requires_grad)
