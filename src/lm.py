@@ -12,7 +12,7 @@ STRICT_SUFFIX = " Follow every formatting instruction in the user's message exac
 def load(adapter_dir=None):
     tok = AutoTokenizer.from_pretrained(MODEL_ID, revision=REVISION)
     tok.padding_side = "left"
-    model = AutoModelForCausalLM.from_pretrained(MODEL_ID, revision=REVISION, torch_dtype=torch.float32)
+    model = AutoModelForCausalLM.from_pretrained(MODEL_ID, revision=REVISION, dtype=torch.float32)
     if adapter_dir:
         from peft import PeftModel
         model = PeftModel.from_pretrained(model, adapter_dir)
@@ -31,7 +31,7 @@ def prompt_text(tok, prompt, strict=False):
 
 
 @torch.no_grad()
-def generate(tok, model, prompts, strict=False, sample=False, n=1, max_new_tokens=256, batch_size=8, seed=0, on_batch=None):
+def generate(tok, model, prompts, strict=False, sample=False, n=1, max_new_tokens=256, batch_size=64, seed=0, on_batch=None):
     """prompts 순서대로 문항당 n개 응답을 돌려준다. sample=False면 탐욕 디코딩(n=1)."""
     texts = [prompt_text(tok, p, strict) for p in prompts for _ in range(n)]
     out = []

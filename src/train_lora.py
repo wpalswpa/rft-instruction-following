@@ -34,7 +34,7 @@ def main():
     torch.manual_seed(CFG["seed"])
     rows = [json.loads(l) for l in (ROOT / "data/rft_train.jsonl").read_text("utf-8").splitlines()]
     tok = AutoTokenizer.from_pretrained(MODEL_ID, revision=REVISION)
-    model = AutoModelForCausalLM.from_pretrained(MODEL_ID, revision=REVISION, torch_dtype=torch.float32)
+    model = AutoModelForCausalLM.from_pretrained(MODEL_ID, revision=REVISION, dtype=torch.float32)
     model = get_peft_model(model, LoraConfig(r=CFG["r"], lora_alpha=CFG["alpha"], lora_dropout=CFG["dropout"],
                                              target_modules=CFG["targets"], task_type="CAUSAL_LM"))
     trainable = sum(p.numel() for p in model.parameters() if p.requires_grad)
