@@ -16,11 +16,12 @@ ROOT = Path(__file__).resolve().parents[1]
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--k", type=int, default=4)
+    ap.add_argument("--max-new-tokens", type=int, default=192)
     args = ap.parse_args()
     items = [json.loads(l) for l in (ROOT / "data/train.jsonl").read_text("utf-8").splitlines()]
     tok, model = load()
     t0 = time.time()
-    outs = generate(tok, model, [it["prompt"] for it in items], sample=True, n=args.k, seed=2026,
+    outs = generate(tok, model, [it["prompt"] for it in items], sample=True, n=args.k, seed=2026, max_new_tokens=args.max_new_tokens,
                     on_batch=lambda d, n: print(f"\r{d}/{n} {time.time() - t0:.0f}s", end="", flush=True))
     print()
     samples, train = [], []

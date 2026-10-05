@@ -31,7 +31,7 @@ def prompt_text(tok, prompt, strict=False):
 
 
 @torch.no_grad()
-def generate(tok, model, prompts, strict=False, sample=False, n=1, max_new_tokens=256, batch_size=64, seed=0, on_batch=None):
+def generate(tok, model, prompts, strict=False, sample=False, n=1, max_new_tokens=256, batch_size=32, seed=0, on_batch=None):
     """prompts 순서대로 문항당 n개 응답을 돌려준다. sample=False면 탐욕 디코딩(n=1)."""
     texts = [prompt_text(tok, p, strict) for p in prompts for _ in range(n)]
     out = []
