@@ -1,0 +1,86 @@
+{
+  "conditions": {
+    "B0": {
+      "prompt_strict": 0.1437,
+      "prompt_strict_n": "23/160",
+      "instruction_level": 0.2207,
+      "per_constraint": {
+        "bullets": "5/25",
+        "end_phrase": "8/25",
+        "json_keys": "0/12",
+        "keyword_twice": "2/26",
+        "lowercase": "14/38",
+        "max_words": "3/31",
+        "no_commas": "1/35",
+        "quote_wrap": "16/30"
+      },
+      "median_words": 93,
+      "math_accuracy": "47/60",
+      "free_spurious": "0/40"
+    },
+    "B1": {
+      "prompt_strict": 0.1437,
+      "prompt_strict_n": "23/160",
+      "instruction_level": 0.2162,
+      "per_constraint": {
+        "bullets": "4/25",
+        "end_phrase": "11/25",
+        "json_keys": "0/12",
+        "keyword_twice": "1/26",
+        "lowercase": "14/38",
+        "max_words": "2/31",
+        "no_commas": "1/35",
+        "quote_wrap": "15/30"
+      },
+      "median_words": 84,
+      "math_accuracy": "46/60",
+      "free_spurious": "0/40"
+    },
+    "M1": {
+      "prompt_strict": 0.4,
+      "prompt_strict_n": "64/160",
+      "instruction_level": 0.509,
+      "per_constraint": {
+        "bullets": "20/25",
+        "end_phrase": "10/25",
+        "json_keys": "12/12",
+        "keyword_twice": "1/26",
+        "lowercase": "26/38",
+        "max_words": "11/31",
+        "no_commas": "6/35",
+        "quote_wrap": "27/30"
+      },
+      "median_words": 64,
+      "math_accuracy": "46/60",
+      "free_spurious": "0/40"
+    }
+  },
+  "comparisons": {
+    "M1_vs_B0": {
+      "diff": 0.2562,
+      "base_only": 2,
+      "m1_only": 43,
+      "mcnemar_p": 5.89e-11,
+      "bootstrap95": [
+        0.1812,
+        0.3312
+      ]
+    },
+    "M1_vs_B1": {
+      "diff": 0.2562,
+      "base_only": 4,
+      "m1_only": 45,
+      "mcnemar_p": 8.23e-10,
+      "bootstrap95": [
+        0.1812,
+        0.3312
+      ]
+    }
+  },
+  "verdict": {
+    "c1_beats_prompt_by_10pp": true,
+    "c2_math_drop_le_5pp": true,
+    "c3_spurious_le_10pct": true,
+    "label": "이 조건에서 효과 있음"
+  }
+}

@@ -1,0 +1,130 @@
+32/1440 214s64/1440 475s96/1440 744s128/1440 949s160/1440 1129s192/1440 1594s224/1440 1857s256/1440 2051s288/1440 2242s320/1440 2429s352/1440 2638s384/1440 2838s416/1440 3051s448/1440 3221s480/1440 3395s512/1440 3547s544/1440 3715s576/1440 3877s608/1440 4050s640/1440 4283s672/1440 4464s704/1440 4645s736/1440 4833s768/1440 4967s800/1440 5097s832/1440 5238s864/1440 5365s896/1440 5497s928/1440 5679s960/1440 5793s992/1440 5910s1024/1440 6069s1056/1440 6204s1088/1440 6362s1120/1440 6520s1152/1440 6683s1184/1440 6807s1216/1440 6931s1248/1440 7055s1280/1440 7197s1312/1440 7334s1344/1440 7463s1376/1440 7635s1408/1440 7811s1440/1440 7991s
+표본 1440개 중 통과 202개, 학습 문항 115/360, 7991s
+step 1/29 loss 1.3615 21s
+step 2/29 loss 1.5249 40s
+step 3/29 loss 1.7097 60s
+step 4/29 loss 1.5537 81s
+step 5/29 loss 1.5101 103s
+step 6/29 loss 1.5316 120s
+step 7/29 loss 1.5898 141s
+step 8/29 loss 1.4054 160s
+step 9/29 loss 1.3081 183s
+step 10/29 loss 1.9453 206s
+step 11/29 loss 1.8029 236s
+step 12/29 loss 1.3440 257s
+step 13/29 loss 1.4693 278s
+step 14/29 loss 1.4913 297s
+step 15/29 loss 1.3027 321s
+step 16/29 loss 1.6228 343s
+step 17/29 loss 1.3163 364s
+step 18/29 loss 1.3588 396s
+step 19/29 loss 1.5406 419s
+step 20/29 loss 1.1859 438s
+step 21/29 loss 1.5340 462s
+step 22/29 loss 1.3474 478s
+step 23/29 loss 1.4485 494s
+step 24/29 loss 1.2884 517s
+step 25/29 loss 1.4559 543s
+step 26/29 loss 1.5330 568s
+step 27/29 loss 1.4891 590s
+step 28/29 loss 1.2317 609s
+학습 예시 115개, 학습 파라미터 2,162,688/496,195,456, 627s
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+B0 test 32/160 180sB0 test 64/160 370sB0 test 96/160 557sB0 test 128/160 726sB0 test 160/160 893s
+B0 control_free 32/40 1035sB0 control_free 40/40 1128s
+B0 control_math 32/60 1137sB0 control_math 60/60 1144s
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+B1 test 32/160 196sB1 test 64/160 387sB1 test 96/160 519sB1 test 128/160 640sB1 test 160/160 762s
+B1 control_free 32/40 873sB1 control_free 40/40 925s
+B1 control_math 32/60 932sB1 control_math 60/60 939s
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+M1 test 32/160 117sM1 test 64/160 253sM1 test 96/160 416sM1 test 128/160 556sM1 test 160/160 725s
+M1 control_free 32/40 922sM1 control_free 40/40 1063s
+M1 control_math 32/60 1074sM1 control_math 60/60 1088s
+{
+  "conditions": {
+    "B0": {
+      "prompt_strict": 0.1437,
+      "prompt_strict_n": "23/160",
+      "instruction_level": 0.2207,
+      "per_constraint": {
+        "bullets": "5/25",
+        "end_phrase": "8/25",
+        "json_keys": "0/12",
+        "keyword_twice": "2/26",
+        "lowercase": "14/38",
+        "max_words": "3/31",
+        "no_commas": "1/35",
+        "quote_wrap": "16/30"
+      },
+      "median_words": 93,
+      "math_accuracy": "47/60",
+      "free_spurious": "0/40"
+    },
+    "B1": {
+      "prompt_strict": 0.1437,
+      "prompt_strict_n": "23/160",
+      "instruction_level": 0.2162,
+      "per_constraint": {
+        "bullets": "4/25",
+        "end_phrase": "11/25",
+        "json_keys": "0/12",
+        "keyword_twice": "1/26",
+        "lowercase": "14/38",
+        "max_words": "2/31",
+        "no_commas": "1/35",
+        "quote_wrap": "15/30"
+      },
+      "median_words": 84,
+      "math_accuracy": "46/60",
+      "free_spurious": "0/40"
+    },
+    "M1": {
+      "prompt_strict": 0.4,
+      "prompt_strict_n": "64/160",
+      "instruction_level": 0.509,
+      "per_constraint": {
+        "bullets": "20/25",
+        "end_phrase": "10/25",
+        "json_keys": "12/12",
+        "keyword_twice": "1/26",
+        "lowercase": "26/38",
+        "max_words": "11/31",
+        "no_commas": "6/35",
+        "quote_wrap": "27/30"
+      },
+      "median_words": 64,
+      "math_accuracy": "46/60",
+      "free_spurious": "0/40"
+    }
+  },
+  "comparisons": {
+    "M1_vs_B0": {
+      "diff": 0.2562,
+      "base_only": 2,
+      "m1_only": 43,
+      "mcnemar_p": 0.0,
+      "bootstrap95": [
+        0.1812,
+        0.3312
+      ]
+    },
+    "M1_vs_B1": {
+      "diff": 0.2562,
+      "base_only": 4,
+      "m1_only": 45,
+      "mcnemar_p": 0.0,
+      "bootstrap95": [
+        0.1812,
+        0.3312
+      ]
+    }
+  },
+  "verdict": {
+    "c1_beats_prompt_by_10pp": true,
+    "c2_math_drop_le_5pp": true,
+    "c3_spurious_le_10pct": true,
+    "label": "이 조건에서 효과 있음"
+  }
+}
+exit 0

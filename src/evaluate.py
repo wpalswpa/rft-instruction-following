@@ -24,7 +24,8 @@ def load_jsonl(path):
 
 def generate_cond(cond):
     from lm import generate, load
-    tok, model = load(adapter_dir=ROOT / "outputs/lora" if cond == "M1" else None)
+    adapter = ROOT / "outputs/lora" if (ROOT / "outputs/lora").exists() else ROOT / "adapter"  # 학습 직후 산출물, 없으면 저장소의 어댑터
+    tok, model = load(adapter_dir=adapter if cond == "M1" else None)
     rows, t0 = [], time.time()
     for name in SETS:
         items = load_jsonl(ROOT / f"data/{name}.jsonl")
@@ -102,7 +103,7 @@ def report():
             b = sum(1 for x, y in zip(a, m) if x and not y)
             c = sum(1 for x, y in zip(a, m) if y and not x)
             comparisons[f"M1_vs_{base}"] = {"diff": round((sum(m) - sum(a)) / len(a), 4), "base_only": b, "m1_only": c,
-                                            "mcnemar_p": round(mcnemar_exact(b, c), 6), "bootstrap95": bootstrap_diff(a, m)}
+                                            "mcnemar_p": float(f"{mcnemar_exact(b, c):.3g}"), "bootstrap95": bootstrap_diff(a, m)}
     verdict = None
     if "M1_vs_B1" in comparisons and "B0" in res:
         cmp = comparisons["M1_vs_B1"]
