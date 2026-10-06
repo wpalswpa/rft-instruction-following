@@ -1,7 +1,9 @@
 """LoRA 미세조정(blueprint 4.2). 손실은 응답 토큰에만 건다.
 
     python src/train_lora.py  ->  outputs/lora/ (어댑터), results/train_log.json
+    python src/train_lora.py --data data/ext/train_R_s43.jsonl --out outputs/ext/R_s43 --seed 43 --log results/ext/train_R_s43.json  (blueprint 10.1)
 """
+import argparse
 import json
 import math
 import random
@@ -29,10 +31,12 @@ def encode(tok, prompt, response):
     return torch.tensor([ids]), torch.tensor([labels[:len(ids)]])
 
 
-def main():
+def main(data="data/rft_train.jsonl", out="outputs/lora", seed=None, log_path="results/train_log.json"):
+    if seed is not None:
+        CFG["seed"] = seed
     random.seed(CFG["seed"])
     torch.manual_seed(CFG["seed"])
-    rows = [json.loads(l) for l in (ROOT / "data/rft_train.jsonl").read_text("utf-8").splitlines()]
+    rows = [json.loads(l) for l in (ROOT / data).read_text("utf-8").splitlines()]
     tok = AutoTokenizer.from_pretrained(MODEL_ID, revision=REVISION)
     model = AutoModelForCausalLM.from_pretrained(MODEL_ID, revision=REVISION, dtype=torch.float32)
     model = get_peft_model(model, LoraConfig(r=CFG["r"], lora_alpha=CFG["alpha"], lora_dropout=CFG["dropout"],
@@ -63,13 +67,18 @@ def main():
                 acc_loss = 0.0
     if k % CFG["grad_accum"]:
         opt.step(); opt.zero_grad()
-    out = ROOT / "outputs/lora"
-    model.save_pretrained(out)
-    (ROOT / "results").mkdir(exist_ok=True)
-    (ROOT / "results/train_log.json").write_text(json.dumps({"config": CFG, "examples": len(data), "optimizer_steps": steps,
+    model.save_pretrained(ROOT / out)
+    (ROOT / log_path).parent.mkdir(parents=True, exist_ok=True)
+    (ROOT / log_path).write_text(json.dumps({"config": CFG, "examples": len(data), "optimizer_steps": steps,
         "trainable_params": trainable, "total_params": total, "seconds": round(time.time() - t0), "log": log}, indent=2), "utf-8")
     print(f"학습 예시 {len(data)}개, 학습 파라미터 {trainable:,}/{total:,}, {time.time() - t0:.0f}s")
 
 
 if __name__ == "__main__":
-    main()
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--data", default="data/rft_train.jsonl")
+    ap.add_argument("--out", default="outputs/lora")
+    ap.add_argument("--seed", type=int)
+    ap.add_argument("--log", default="results/train_log.json")
+    a = ap.parse_args()
+    main(a.data, a.out, a.seed, a.log)

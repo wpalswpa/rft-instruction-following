@@ -1,0 +1,175 @@
+S s43: 학습 예시 115개, 응답 단어 중앙값 60
+step 1/29 loss 1.4071 28s
+step 2/29 loss 1.7710 47s
+step 3/29 loss 1.6307 70s
+step 4/29 loss 1.7650 93s
+step 5/29 loss 1.4589 110s
+step 6/29 loss 1.2766 124s
+step 7/29 loss 1.4885 143s
+step 8/29 loss 1.5774 161s
+step 9/29 loss 1.5526 185s
+step 10/29 loss 1.6375 206s
+step 11/29 loss 1.7579 225s
+step 12/29 loss 1.6382 245s
+step 13/29 loss 1.3178 265s
+step 14/29 loss 1.1704 283s
+step 15/29 loss 1.6056 308s
+step 16/29 loss 1.4447 327s
+step 17/29 loss 1.3291 350s
+step 18/29 loss 1.2092 371s
+step 19/29 loss 1.3485 390s
+step 20/29 loss 1.3160 410s
+step 21/29 loss 1.4097 435s
+step 22/29 loss 1.5978 458s
+step 23/29 loss 1.4419 476s
+step 24/29 loss 1.4000 499s
+step 25/29 loss 1.3878 517s
+step 26/29 loss 1.4031 532s
+step 27/29 loss 1.3102 550s
+step 28/29 loss 1.1843 565s
+학습 예시 115개, 학습 파라미터 2,162,688/496,195,456, 579s
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+M1 test 32/160 129sM1 test 64/160 252sM1 test 96/160 378sM1 test 128/160 502sM1 test 160/160 631s
+M1 control_free 32/40 781sM1 control_free 40/40 849s
+M1 control_math 32/60 856sM1 control_math 60/60 864s
+S s44: 학습 예시 115개, 응답 단어 중앙값 60
+step 1/29 loss 1.5204 24s
+step 2/29 loss 1.4089 50s
+step 3/29 loss 1.7940 71s
+step 4/29 loss 1.5523 95s
+step 5/29 loss 1.6947 127s
+step 6/29 loss 1.6212 145s
+step 7/29 loss 1.4771 166s
+step 8/29 loss 1.5029 188s
+step 9/29 loss 1.4713 206s
+step 10/29 loss 1.6267 225s
+step 11/29 loss 1.6940 248s
+step 12/29 loss 1.4616 268s
+step 13/29 loss 1.2838 284s
+step 14/29 loss 1.2985 324s
+step 15/29 loss 1.6386 344s
+step 16/29 loss 1.3926 366s
+step 17/29 loss 1.3982 385s
+step 18/29 loss 1.4024 405s
+step 19/29 loss 1.4576 426s
+step 20/29 loss 1.5110 446s
+step 21/29 loss 1.2740 463s
+step 22/29 loss 1.7108 486s
+step 23/29 loss 1.2119 503s
+step 24/29 loss 1.6664 521s
+step 25/29 loss 1.3115 542s
+step 26/29 loss 1.1758 560s
+step 27/29 loss 1.2418 598s
+step 28/29 loss 1.4319 630s
+학습 예시 115개, 학습 파라미터 2,162,688/496,195,456, 649s
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+M1 test 32/160 177sM1 test 64/160 315sM1 test 96/160 438sM1 test 128/160 612sM1 test 160/160 794s
+M1 control_free 32/40 1010sM1 control_free 40/40 1099s
+M1 control_math 32/60 1106sM1 control_math 60/60 1114s
+R s42: 학습 예시 115개, 응답 단어 중앙값 74
+step 1/29 loss 1.3107 29s
+step 2/29 loss 1.5330 57s
+step 3/29 loss 1.5703 80s
+step 4/29 loss 1.5453 105s
+step 5/29 loss 1.4146 131s
+step 6/29 loss 1.5930 158s
+step 7/29 loss 1.6604 182s
+step 8/29 loss 1.4342 202s
+step 9/29 loss 1.4633 223s
+step 10/29 loss 1.7966 244s
+step 11/29 loss 1.7964 270s
+step 12/29 loss 1.3509 289s
+step 13/29 loss 1.4634 306s
+step 14/29 loss 1.4759 324s
+step 15/29 loss 1.2828 340s
+step 16/29 loss 1.5864 358s
+step 17/29 loss 1.3698 376s
+step 18/29 loss 1.5432 395s
+step 19/29 loss 1.5204 417s
+step 20/29 loss 1.2314 434s
+step 21/29 loss 1.5085 456s
+step 22/29 loss 1.3015 477s
+step 23/29 loss 1.3423 494s
+step 24/29 loss 1.3438 518s
+step 25/29 loss 1.3061 539s
+step 26/29 loss 1.4757 560s
+step 27/29 loss 1.4945 581s
+step 28/29 loss 1.2380 599s
+학습 예시 115개, 학습 파라미터 2,162,688/496,195,456, 616s
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+M1 test 32/160 124sM1 test 64/160 259sM1 test 96/160 404sM1 test 128/160 546sM1 test 160/160 673s
+M1 control_free 32/40 779sM1 control_free 40/40 827s
+M1 control_math 32/60 832sM1 control_math 60/60 839s
+R s43: 학습 예시 115개, 응답 단어 중앙값 71
+step 1/29 loss 1.3856 20s
+step 2/29 loss 1.5584 38s
+step 3/29 loss 1.6475 53s
+step 4/29 loss 1.6487 75s
+step 5/29 loss 1.4562 91s
+step 6/29 loss 1.3509 107s
+step 7/29 loss 1.4983 129s
+step 8/29 loss 1.5477 144s
+step 9/29 loss 1.5556 162s
+step 10/29 loss 1.6470 179s
+step 11/29 loss 1.7669 198s
+step 12/29 loss 1.5992 215s
+step 13/29 loss 1.2984 231s
+step 14/29 loss 1.1791 246s
+step 15/29 loss 1.5924 263s
+step 16/29 loss 1.4422 279s
+step 17/29 loss 1.3272 298s
+step 18/29 loss 1.2331 316s
+step 19/29 loss 1.3440 335s
+step 20/29 loss 1.2766 357s
+step 21/29 loss 1.4481 378s
+step 22/29 loss 1.3713 395s
+step 23/29 loss 1.4967 412s
+step 24/29 loss 1.4050 431s
+step 25/29 loss 1.3680 447s
+step 26/29 loss 1.3320 463s
+step 27/29 loss 1.3113 483s
+step 28/29 loss 1.1542 503s
+학습 예시 115개, 학습 파라미터 2,162,688/496,195,456, 519s
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+M1 test 32/160 137sM1 test 64/160 283sM1 test 96/160 424sM1 test 128/160 556sM1 test 160/160 685s
+M1 control_free 32/40 831sM1 control_free 40/40 890s
+M1 control_math 32/60 896sM1 control_math 60/60 901s
+R s44: 학습 예시 115개, 응답 단어 중앙값 73
+step 1/29 loss 1.3682 22s
+step 2/29 loss 1.4715 43s
+step 3/29 loss 1.7421 61s
+step 4/29 loss 1.5240 79s
+step 5/29 loss 1.7364 100s
+step 6/29 loss 1.5460 116s
+step 7/29 loss 1.5257 131s
+step 8/29 loss 1.5193 147s
+step 9/29 loss 1.4919 164s
+step 10/29 loss 1.6627 180s
+step 11/29 loss 1.5954 195s
+step 12/29 loss 1.4986 215s
+step 13/29 loss 1.3172 239s
+step 14/29 loss 1.3490 257s
+step 15/29 loss 1.6000 272s
+step 16/29 loss 1.3576 288s
+step 17/29 loss 1.3748 307s
+step 18/29 loss 1.4829 324s
+step 19/29 loss 1.4381 340s
+step 20/29 loss 1.4511 356s
+step 21/29 loss 1.2434 372s
+step 22/29 loss 1.6588 387s
+step 23/29 loss 1.2198 401s
+step 24/29 loss 1.7121 416s
+step 25/29 loss 1.4450 432s
+step 26/29 loss 1.1913 449s
+step 27/29 loss 1.2953 469s
+step 28/29 loss 1.4846 493s
+학습 예시 115개, 학습 파라미터 2,162,688/496,195,456, 508s
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+M1 test 32/160 129sM1 test 64/160 249sM1 test 96/160 370sM1 test 128/160 499sM1 test 160/160 8228s
+M1 control_free 32/40 8388sM1 control_free 40/40 8449s
+M1 control_math 32/60 8463sM1 control_math 60/60 8473s
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+M1 test 32/160 160sM1 test 64/160 312sM1 test 96/160 467sM1 test 128/160 625sM1 test 160/160 820s
+M1 control_free 32/40 1020sM1 control_free 40/40 1108s
+M1 control_math 32/60 1123sM1 control_math 60/60 1135s
+run_ext.sh: line 13: syntax error near unexpected token `done'

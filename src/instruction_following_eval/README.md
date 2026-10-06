@@ -1,0 +1,1 @@
+Google Research의 IFEval 판정 코드(https://github.com/google-research/google-research/tree/master/instruction_following_eval)를 수정 없이 복사했다. 라이선스는 같은 폴더의 LICENSE(Apache-2.0). 문항 `data/ifeval/input_data.jsonl`도 같은 저장소에서 가져왔다(2026-10-06).

@@ -22,9 +22,10 @@ def load_jsonl(path):
     return [json.loads(l) for l in Path(path).read_text("utf-8").splitlines() if l.strip()]
 
 
-def generate_cond(cond):
+def generate_cond(cond, adapter=None, out=None):
     from lm import generate, load
-    adapter = ROOT / "outputs/lora" if (ROOT / "outputs/lora").exists() else ROOT / "adapter"  # 학습 직후 산출물, 없으면 저장소의 어댑터
+    if adapter is None:
+        adapter = ROOT / "outputs/lora" if (ROOT / "outputs/lora").exists() else ROOT / "adapter"  # 학습 직후 산출물, 없으면 저장소의 어댑터
     tok, model = load(adapter_dir=adapter if cond == "M1" else None)
     rows, t0 = [], time.time()
     for name in SETS:
@@ -33,8 +34,9 @@ def generate_cond(cond):
                         on_batch=lambda d, n: print(f"\r{cond} {name} {d}/{n} {time.time() - t0:.0f}s", end="", flush=True))
         print()
         rows += [{"set": name, "id": it["id"], "response": o[0]} for it, o in zip(items, outs)]
-    (ROOT / "results").mkdir(exist_ok=True)
-    (ROOT / f"results/gen_{cond}.jsonl").write_text("".join(json.dumps(r, ensure_ascii=False) + "\n" for r in rows), "utf-8")
+    out = Path(out) if out else ROOT / f"results/gen_{cond}.jsonl"
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text("".join(json.dumps(r, ensure_ascii=False) + "\n" for r in rows), "utf-8")
 
 
 def spurious(text):
@@ -122,5 +124,7 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("mode", choices=["generate", "report"])
     ap.add_argument("--cond", choices=["B0", "B1", "M1"])
+    ap.add_argument("--adapter", help="M1 어댑터 폴더(확장 실험, blueprint 10.1)")
+    ap.add_argument("--out", help="생성 결과 경로(확장 실험)")
     a = ap.parse_args()
-    generate_cond(a.cond) if a.mode == "generate" else report()
+    generate_cond(a.cond, a.adapter and ROOT / a.adapter, a.out and ROOT / a.out) if a.mode == "generate" else report()

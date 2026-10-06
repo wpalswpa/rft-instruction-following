@@ -93,3 +93,4 @@
 - **지표.** 공식 네 지표(문항 단위 strict·loose, 지시 단위 strict·loose). M1과 B1의 문항 단위 strict 쌍 비교에 McNemar 정확 검정.
 - **겹침 분석(미리 정한 분류).** IFEval 지시 중 이 실험의 8종과 같은 계열 `punctuation:no_comma`, `change_case:english_lowercase`, `detectable_format:number_bullet_lists`, `detectable_format:json_format`, `startend:end_checker`, `startend:quotation`, `keywords:frequency`, `length_constraints:number_words`를 "겹침"으로 둔다. 지시 단위 strict를 겹침·비겹침으로 나눠 보고한다.
 - **예측(검증할 가설).** M1의 향상은 겹침 지시에 몰리고, 비겹침 지시에서는 차이가 작거나 낮아질 수 있다. 성공 기준은 두지 않는다. 결과 방향과 크기를 그대로 적고, 자체 시험과 다르면 그 차이를 분석한다.
+- 2026-10-06 20:30, E1 결과를 본 뒤. 실행 도중 실행 스크립트(run_ext.sh)에 "끝난 회차 건너뛰기"를 넣으면서 돌고 있던 bash가 바뀐 파일을 이어 읽어, 다섯 번째 회차(R·44) 생성이 끝난 직후 문법 오류로 멈췄다. 다섯 회차의 학습·생성은 모두 끝난 뒤였고, 집계(`extend.py report`)와 IFEval은 손으로 다시 시작했다. 판정 기준·데이터·하이퍼파라미터는 바꾸지 않았다.

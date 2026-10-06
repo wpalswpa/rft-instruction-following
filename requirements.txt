@@ -1,0 +1,13 @@
+# 실험에 쓴 판(노트북 CPU, Python 3.12). torch는 CPU 판: pip install torch==2.14.1 --index-url https://download.pytorch.org/whl/cpu
+torch==2.14.1
+transformers==4.57.6
+peft==0.21.2
+accelerate==1.15.0
+safetensors==0.8.0
+tokenizers==0.22.2
+pytest
+# IFEval 판정 코드(src/instruction_following_eval)가 쓰는 패키지
+langdetect
+nltk
+immutabledict
+absl-py

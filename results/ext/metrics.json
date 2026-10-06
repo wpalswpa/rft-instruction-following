@@ -1,0 +1,189 @@
+{
+  "B1": {
+    "strict": 23,
+    "n": 160,
+    "median_words": 84,
+    "per_constraint": {
+      "bullets": 4,
+      "end_phrase": 11,
+      "json_keys": 0,
+      "keyword_twice": 1,
+      "lowercase": 14,
+      "max_words": 2,
+      "no_commas": 1,
+      "quote_wrap": 15
+    },
+    "math": 46,
+    "spurious": 0
+  },
+  "runs": {
+    "S_s42": {
+      "strict": 64,
+      "n": 160,
+      "median_words": 64,
+      "per_constraint": {
+        "bullets": 20,
+        "end_phrase": 10,
+        "json_keys": 12,
+        "keyword_twice": 1,
+        "lowercase": 26,
+        "max_words": 11,
+        "no_commas": 6,
+        "quote_wrap": 27
+      },
+      "math": 46,
+      "spurious": 0
+    },
+    "S_s43": {
+      "strict": 46,
+      "n": 160,
+      "median_words": 78,
+      "per_constraint": {
+        "bullets": 14,
+        "end_phrase": 7,
+        "json_keys": 12,
+        "keyword_twice": 3,
+        "lowercase": 13,
+        "max_words": 10,
+        "no_commas": 3,
+        "quote_wrap": 23
+      },
+      "math": 48,
+      "spurious": 0
+    },
+    "S_s44": {
+      "strict": 61,
+      "n": 160,
+      "median_words": 68,
+      "per_constraint": {
+        "bullets": 17,
+        "end_phrase": 15,
+        "json_keys": 12,
+        "keyword_twice": 3,
+        "lowercase": 22,
+        "max_words": 10,
+        "no_commas": 6,
+        "quote_wrap": 20
+      },
+      "math": 48,
+      "spurious": 0
+    },
+    "R_s42": {
+      "strict": 52,
+      "n": 160,
+      "median_words": 73,
+      "per_constraint": {
+        "bullets": 13,
+        "end_phrase": 9,
+        "json_keys": 12,
+        "keyword_twice": 3,
+        "lowercase": 25,
+        "max_words": 9,
+        "no_commas": 3,
+        "quote_wrap": 21
+      },
+      "math": 46,
+      "spurious": 0
+    },
+    "R_s43": {
+      "strict": 49,
+      "n": 160,
+      "median_words": 74,
+      "per_constraint": {
+        "bullets": 16,
+        "end_phrase": 9,
+        "json_keys": 12,
+        "keyword_twice": 2,
+        "lowercase": 19,
+        "max_words": 11,
+        "no_commas": 1,
+        "quote_wrap": 21
+      },
+      "math": 46,
+      "spurious": 0
+    },
+    "R_s44": {
+      "strict": 54,
+      "n": 160,
+      "median_words": 68,
+      "per_constraint": {
+        "bullets": 16,
+        "end_phrase": 10,
+        "json_keys": 12,
+        "keyword_twice": 3,
+        "lowercase": 19,
+        "max_words": 8,
+        "no_commas": 2,
+        "quote_wrap": 26
+      },
+      "math": 47,
+      "spurious": 0
+    }
+  },
+  "summary": {
+    "S": {
+      "runs": 3,
+      "strict_counts": [
+        64,
+        46,
+        61
+      ],
+      "strict_mean": 0.3563,
+      "strict_sd": 0.0603,
+      "median_words": [
+        64,
+        78,
+        68
+      ],
+      "max_words_pass": [
+        11,
+        10,
+        10
+      ],
+      "math": [
+        46,
+        48,
+        48
+      ],
+      "spurious": [
+        0,
+        0,
+        0
+      ]
+    },
+    "R": {
+      "runs": 3,
+      "strict_counts": [
+        52,
+        49,
+        54
+      ],
+      "strict_mean": 0.3229,
+      "strict_sd": 0.0157,
+      "median_words": [
+        73,
+        74,
+        68
+      ],
+      "max_words_pass": [
+        9,
+        11,
+        8
+      ],
+      "math": [
+        46,
+        46,
+        47
+      ],
+      "spurious": [
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "judgement_blueprint_10_1": {
+    "a_seed_stable": true,
+    "b_R_beats_B1_by_10pp": true
+  }
+}
