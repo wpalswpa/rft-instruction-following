@@ -78,11 +78,27 @@ Qwen2.5-0.5B-Instruct가 "정확히 3개의 글머리표로", "쉼표를 쓰지 
 
 ## 재현
 
+### 모델 없이 기존 결과 확인
+
+Python 3.12와 pytest만 있으면 검사기와 저장된 응답의 집계를 확인할 수 있다. 저장소 루트에서 실행한다. `report`는 모델을 부르지 않고 기존 응답을 다시 채점해 지표 JSON을 덮어쓰므로, 기존 결과와 비교하려면 별도 작업 사본에서 실행한다.
+
+```bash
+python -m pytest -q tests
+python src/evaluate.py report
+python src/extend.py report
+```
+
+문항 생성은 `python src/build_data.py`로 확인한다. 커밋된 `data/train.jsonl`, `data/test.jsonl`, `data/control_free.jsonl`, `data/control_math.jsonl`과 달라지면 입력 재현을 확인해야 한다. [CI](.github/workflows/tests.yml)는 검사기와 문항 재현을 확인하며 모델 학습을 다시 돌리지 않는다.
+
+### 전체 학습과 생성
+
+아래는 기존 실험의 Windows Git Bash 명령이다. CPU용 torch를 설치한 같은 가상환경 Python으로 계속 실행한다. 모델 다운로드와 장시간 연산이 필요하고 `data/`, `outputs/`, `results/`를 다시 쓴다. Linux에서는 `.venv/Scripts` 대신 `.venv/bin`을 사용한다. 이 문서 정리에서는 전체 학습을 재실행하지 않았다.
+
 ```bash
 python -m venv .venv && .venv/Scripts/pip install torch==2.14.1 --index-url https://download.pytorch.org/whl/cpu
 .venv/Scripts/pip install -r requirements.txt
-python -m pytest -q tests                           # 검사기 시험
-cd src && python build_data.py && cd ..             # 문항 생성(커밋된 data/와 같아야 한다)
+.venv/Scripts/python -m pytest -q tests             # 설치한 가상환경의 검사기 시험
+cd src && ../.venv/Scripts/python build_data.py && cd ..             # 문항 생성(커밋된 data/와 같아야 한다)
 PY=.venv/Scripts/python bash run_all.sh            # 첫 실험: 거부 샘플링 → 학습 → B0·B1·M1 생성 → 지표
 PY=.venv/Scripts/python bash run_ext.sh            # 확장 실험: 시드·선택 규칙 5회 학습·평가 → IFEval
 ```

@@ -24,6 +24,7 @@ def check_bullets(text, n):
 
 
 def check_lowercase(text):
+    # 빈 답·숫자만 있는 답을 통과시키지 않는다. 영문이 하나 이상 있어야 한다.
     t = _strip(text)
     return bool(re.search(r"[A-Za-z]", t)) and t == t.lower()
 
@@ -90,5 +91,7 @@ def instruction(item):
 
 
 def judge(text, item):
+    # 선별과 평가가 같은 검사기를 쓴다. 이 결과는 지정 형식 준수이며
+    # 응답 내용의 사실성·유용성이나 새로운 지시 종류의 일반화가 아니다.
     """문항의 제약마다 통과 여부. 반환: {이름: bool}."""
     return {c["name"]: bool(CONSTRAINTS[c["name"]][1](text, c["args"])) for c in item["constraints"]}

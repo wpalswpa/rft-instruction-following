@@ -60,6 +60,8 @@ def bootstrap_diff(a, b, reps=10000, seed=7):
     rng = random.Random(seed)
     n, diffs = len(a), []
     for _ in range(reps):
+        # 같은 문항의 두 조건을 함께 뽑는 paired bootstrap이다.
+        # 두 조건을 독립 추출하면 문항별 난이도 대응이 사라진다.
         idx = [rng.randrange(n) for _ in range(n)]
         diffs.append(sum(b[i] - a[i] for i in idx) / n)
     diffs.sort()
@@ -78,6 +80,8 @@ def report():
             by_set[g["set"]][g["id"]] = g["response"]
         ids = sorted(test)
         verdicts = {i: judge(by_set["test"][i], test[i]) for i in ids}
+        # 문항의 모든 제약을 만족해야 1이다. 아래 per_constraint의
+        # 분모와 다르므로 지시별 통과율과 문항 통과율을 섞지 않는다.
         strict = [int(all(verdicts[i].values())) for i in ids]
         per = defaultdict(list)
         for i in ids:

@@ -29,6 +29,8 @@ def main():
         verdicts = [judge(r, it) for r in responses]
         passed = [r for r, v in zip(responses, verdicts) if all(v.values())]
         samples.append({"id": it["id"], "responses": responses, "verdicts": verdicts})
+        # 모두 실패한 문항은 억지로 채우지 않는다. 따라서 학습 표본이
+        # 쉬운 제약에 치우칠 수 있고, 가장 짧음은 문자 수 기준이다.
         if passed:
             train.append({"id": it["id"], "prompt": it["prompt"], "response": min(passed, key=len)})
     (ROOT / "data/rft_samples.jsonl").write_text("".join(json.dumps(s, ensure_ascii=False) + "\n" for s in samples), "utf-8")
